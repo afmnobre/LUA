@@ -59,7 +59,7 @@ function imprime_interacao(numero, resultado_da_tentativa)
     end
     return not resultado_da_tentativa
 end
-
+--FUNÇÃO QUE CHAMA A CAPTURA DE PALPITE DO JOGADOR E RETORNA ......
 function partida(numero_secreto)
     palpite = captura_palpite()
     return imprime_interacao(numero_secreto, compara_palpite(numero_secreto, palpite))
