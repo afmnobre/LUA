@@ -59,22 +59,39 @@ function imprime_interacao(numero, resultado_da_tentativa)
     end
     return not resultado_da_tentativa
 end
+
+--VARIAVEL que armazena o numero aleatório.
+numero_secreto = cria_numero_aleatorio()
 --FUNÇÃO QUE CHAMA A CAPTURA DE PALPITE DO JOGADOR E RETORNA ......
 function partida(numero_secreto)
     palpite = captura_palpite()
     return imprime_interacao(numero_secreto, compara_palpite(numero_secreto, palpite))
 end
+--REPETE O LOOPING enquando o CONTINUA JOGANDO for TRUE.
+function loop_principal()
+    continua_jogando = true
+    while continua_jogando do
+        continua_jogando = partida(numero_secreto)
+    end
+end
 
+function jogo()
+        repete_o_jogo = true
+        repeat
+            cria_numero_aleatorio()
+            loop_principal()
+            print("Deseja Jogar Novamente? [sim | não]")
+            resposta = io.read()
+            if resposta == "não" then
+                print("SAINDO DO JOGO! Obrigado por Jogar!")
+                repete_o_jogo = false
+            end
+        until not repete_o_jogo
+
+end
 --CHAMANDO A FUNÇÃO DE ABERTURA DO JOGO
 abertura_do_jogo()
 --CHAMANDO A FUNÇÃO PARA VER O MANUAL DO JOGO COM AS INSTRUIÇÕES.
 manual()
---VARIAVEL que armazena o numero aleatório.
-numero_secreto = cria_numero_aleatorio()
 
---REPETE O LOOPING enquando o CONTINUA JOGANDO for TRUE.
-continua_jogando = true
-while continua_jogando do
-    continua_jogando = partida(numero_secreto)
-end
-
+jogo()
